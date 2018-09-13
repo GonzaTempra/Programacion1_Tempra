@@ -1,0 +1,57 @@
+
+<?php
+    setlocale(LC_TIME, 'es_ES.UTF-8');
+    $mesactual=strftime("%B");
+    $diaactual=strftime("%d");
+    $anioactual=strftime("%G");
+?>
+<form action="Ejercicio2.php" method="get">
+        <select name="dia" id="dia">
+            <?php
+                for ($i=0;$i<31;$i++){
+                    if($i<10){
+                        $a='0'.$i;
+                    }else{
+                        $a=$i;
+                    }
+                    if ($i==$diaactual){
+                        echo "<option value=\"$i\" selected="selected"> $a </option>";
+                    }else{
+                        echo "<option value=\"$i\"> $a </option>";
+                    }
+                }
+            ?>
+        </select>
+        <select name="mes" id="mes">
+            <?php
+                $mes=['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+                for($i=0;$i<12;$i++){
+                    if ($mes[$i]==$mesactual){
+                        echo "<option value='$mes[$i]' selected='selected'>".$mes[$i]." </option>";
+                    }else{
+                        echo "<option value='$mes[$i]'>". $mes[$i]. " </option>";
+                    }
+                }
+            ?>
+        </select>
+        <select name="anio" id="anio">
+            <?php
+            for($i=1900;$i<2101;$i++){
+                if ($i==$anioactual){
+                    echo "<option value="$i" selected="selected"> $i </option>";
+                }else{
+                    echo "<option value="$i"> $i </option>";
+                }
+            }
+            ?>
+        </select>
+        <br>
+        
+        <?php
+         echo <input type="hidden" name="mesnum" value="$mesnum">;
+        ?>
+        <br>
+        <input type="checkbox" name="check1" value="1">SI
+        <br>
+        <input type="submit" value="Enviar">
+</form>
